@@ -5,12 +5,18 @@ export default function PlayerInfo(params) {
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
-    // If in editing mode, save the new name to the prop
     if (isEditing) {
-      params.onNameChange(name); // assuming you have a function to update the parent component
+      // Update the name state first
+      setName(name);
+  
+      // Then call the function to update the parent component
+      params.onNameChange(name);
     }
+  
     setIsEditing((editing) => !editing);
   }
+  
+  
 
   function handleNameChange(event) {
     setName(event.target.value);
